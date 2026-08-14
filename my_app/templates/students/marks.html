@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+
+{% block title %}
+    My Marks
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ===================================================== -->
+
+    <div class="page-title">
+
+        <div>
+
+            <h1>
+                My Marks
+            </h1>
+
+            <p class="text-muted mb-0">
+                View your examination results
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'student_dashboard' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Dashboard
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         MARKS TABLE
+    ===================================================== -->
+
+    <div class="dashboard-panel">
+
+
+        <!-- PANEL HEADER -->
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Examination Results
+                </h3>
+
+                <span>
+                    Your recorded marks
+                </span>
+
+            </div>
+
+
+            <span class="badge bg-success">
+
+                {{ marks|length }} Records
+
+            </span>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="dashboard-table">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Subject
+                        </th>
+
+                        <th>
+                            Exam
+                        </th>
+
+                        <th>
+                            Obtained Marks
+                        </th>
+
+                        <th>
+                            Total Marks
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for mark in marks %}
+
+                    <tr>
+
+
+                        <!-- SUBJECT -->
+
+                        <td>
+
+                            <strong>
+                                {{ mark.subject }}
+                            </strong>
+
+                        </td>
+
+
+                        <!-- EXAM -->
+
+                        <td>
+
+                            {% if mark.exam_name == "Mid" %}
+
+                                <span class="badge bg-warning text-dark">
+                                    Mid Term
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-primary">
+                                    Final Term
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- OBTAINED -->
+
+                        <td>
+
+                            <strong>
+                                {{ mark.obtain_marks }}
+                            </strong>
+
+                        </td>
+
+
+                        <!-- TOTAL -->
+
+                        <td>
+
+                            {{ mark.total_marks }}
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <!-- EMPTY STATE -->
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="text-center py-5"
+                        >
+
+                            <i
+                                class='bx bx-book-open'
+                                style="font-size:45px;color:#94a3b8;"
+                            ></i>
+
+                            <h5 class="mt-2">
+                                No Marks Available
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                Your examination marks have not been recorded yet.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ===================================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="quick-actions">
+
+
+            <a
+                href="{% url 'student_attendance' %}"
+                class="quick-action warning"
+            >
+
+                <i class='bx bx-calendar-check'></i>
+
+                <div>
+
+                    <strong>
+                        My Attendance
+                    </strong>
+
+                    <small>
+                        View attendance records
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <a
+                href="{% url 'student_report_card' %}"
+                class="quick-action purple"
+            >
+
+                <i class='bx bx-file'></i>
+
+                <div>
+
+                    <strong>
+                        My Report Card
+                    </strong>
+
+                    <small>
+                        View complete academic performance
+                    </small>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

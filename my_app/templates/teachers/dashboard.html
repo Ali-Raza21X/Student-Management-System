@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Teacher Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section teacher-dashboard">
+
+
+    <!-- =====================================================
+         DASHBOARD HEADER
+    ===================================================== -->
+
+    <div class="dashboard-heading">
+
+        <div>
+
+            <span class="text-muted">
+                Teacher Portal
+            </span>
+
+            <h1>
+                Teacher Dashboard
+            </h1>
+
+            <p>
+                Manage student attendance and examination marks.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         WELCOME PANEL
+    ===================================================== -->
+
+    <div class="dashboard-panel teacher-welcome">
+
+        <div class="teacher-welcome-content">
+
+            <div class="profile-avatar">
+
+                <i class='bx bxs-user-badge'></i>
+
+            </div>
+
+
+            <div>
+
+                <small class="text-muted">
+                    Welcome back
+                </small>
+
+                <h2>
+                    {{ request.user.username }}
+                </h2>
+
+                <p class="mb-0 text-muted">
+                    Use the options below to manage your academic records.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         QUICK ACTIONS
+    ===================================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Quick Actions
+                </h3>
+
+                <span>
+                    Frequently used teacher functions
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
+            <!-- ADD ATTENDANCE -->
+
+            <a
+                href="{% url 'add_attend' %}"
+                class="quick-action"
+            >
+
+                <i class='bx bx-calendar-plus'></i>
+
+                <div>
+
+                    <strong>
+                        Record Attendance
+                    </strong>
+
+                    <small>
+                        Mark student attendance
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- VIEW ATTENDANCE -->
+
+            <a
+                href="{% url 'view_attend' %}"
+                class="quick-action cyan"
+            >
+
+                <i class='bx bx-calendar-check'></i>
+
+                <div>
+
+                    <strong>
+                        View Attendance
+                    </strong>
+
+                    <small>
+                        Review attendance records
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- ADD MARKS -->
+
+            <a
+                href="{% url 'add_marks' %}"
+                class="quick-action success"
+            >
+
+                <i class='bx bx-edit'></i>
+
+                <div>
+
+                    <strong>
+                        Add Marks
+                    </strong>
+
+                    <small>
+                        Enter examination marks
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- VIEW MARKS -->
+
+            <a
+                href="{% url 'view_marks' %}"
+                class="quick-action purple"
+            >
+
+                <i class='bx bx-book-open'></i>
+
+                <div>
+
+                    <strong>
+                        View Marks
+                    </strong>
+
+                    <small>
+                        Review student results
+                    </small>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TEACHER INFORMATION
+    ===================================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Teacher Portal
+                </h3>
+
+                <span>
+                    Available academic management tools
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="row g-3 p-4">
+
+            <div class="col-md-6">
+
+                <div class="info-box mb-0">
+
+                    <i class='bx bx-calendar-check icon text-primary'></i>
+
+                    <strong class="ms-2">
+                        Attendance Management
+                    </strong>
+
+                    <p class="text-muted text-small mt-2 mb-0">
+                        Record and review student attendance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="info-box mb-0">
+
+                    <i class='bx bx-book-open icon text-success'></i>
+
+                    <strong class="ms-2">
+                        Marks Management
+                    </strong>
+
+                    <p class="text-muted text-small mt-2 mb-0">
+                        Enter and review examination results.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

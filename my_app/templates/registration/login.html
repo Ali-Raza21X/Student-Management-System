@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Login | StudentMS{% endblock %}
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <!-- LOGO -->
+
+        <div class="auth-logo">
+
+            <div class="auth-logo-icon">
+                <i class='bx bxs-graduation'></i>
+            </div>
+
+            <h1>StudentMS</h1>
+
+            <p>
+                Student Management System
+            </p>
+
+        </div>
+
+
+        <!-- HEADER -->
+
+        <div class="auth-header">
+
+            <h2>Welcome Back</h2>
+
+            <p>
+                Sign in to access your dashboard
+            </p>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+
+        <form method="post" class="auth-form">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+
+            <button
+                type="submit"
+                class="btn btn-primary auth-submit"
+            >
+
+                <i class='bx bx-log-in'></i>
+
+                Login
+
+            </button>
+
+        </form>
+
+
+        <!-- FOOTER -->
+
+        <div class="auth-footer">
+
+            <i class='bx bx-shield-quarter'></i>
+
+            Secure access to StudentMS
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

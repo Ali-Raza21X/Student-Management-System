@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Marks Details
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Academic Records
+            </span>
+
+            <h1>
+                Marks Details
+            </h1>
+
+            <p class="text-muted mb-0">
+                Detailed examination result information.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'view_marks' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Back to Marks
+
+        </a>
+
+    </div>
+
+
+    <!-- STUDENT RESULT CARD -->
+
+    <div class="dashboard-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Examination Result
+                </h3>
+
+                <span>
+                    Student academic performance
+                </span>
+
+            </div>
+
+
+            <span class="badge bg-primary">
+
+                {{ get_mrk.exam_name }}
+
+            </span>
+
+        </div>
+
+
+        <div class="details-grid">
+
+            <!-- STUDENT -->
+
+            <div class="detail-item">
+
+                <div class="detail-icon">
+
+                    <i class='bx bxs-user'></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+                        Student
+                    </small>
+
+                    <strong>
+                        {{ get_mrk.student }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBJECT -->
+
+            <div class="detail-item">
+
+                <div class="detail-icon">
+
+                    <i class='bx bx-book-open'></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+                        Subject
+                    </small>
+
+                    <strong>
+                        {{ get_mrk.subject }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXAM -->
+
+            <div class="detail-item">
+
+                <div class="detail-icon">
+
+                    <i class='bx bx-file'></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+                        Examination
+                    </small>
+
+                    <strong>
+                        {{ get_mrk.exam_name }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- OBTAINED -->
+
+            <div class="detail-item">
+
+                <div class="detail-icon">
+
+                    <i class='bx bx-bar-chart-alt-2'></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+                        Obtained Marks
+                    </small>
+
+                    <strong>
+                        {{ get_mrk.obtain_marks }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="detail-item">
+
+                <div class="detail-icon">
+
+                    <i class='bx bx-list-ol'></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+                        Total Marks
+                    </small>
+
+                    <strong>
+                        {{ get_mrk.total_marks }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERCENTAGE -->
+
+            <div class="detail-item">
+
+                <div class="detail-icon">
+
+                    <i class='bx bx-trending-up'></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+                        Percentage
+                    </small>
+
+                    <strong>
+
+                        {% widthratio get_mrk.obtain_marks get_mrk.total_marks 100 %}%
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULT SUMMARY -->
+
+        <div class="result-summary">
+
+            <div>
+
+                <span>
+                    Final Score
+                </span>
+
+                <h2>
+
+                    {{ get_mrk.obtain_marks }}
+
+                    <small>
+                        / {{ get_mrk.total_marks }}
+                    </small>
+
+                </h2>
+
+            </div>
+
+
+            <div class="result-percentage">
+
+                {% widthratio get_mrk.obtain_marks get_mrk.total_marks 100 %}%
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="detail-actions">
+
+            <a
+                href="{% url 'update_marks' get_mrk.id %}"
+                class="btn btn-warning"
+            >
+
+                <i class='bx bx-edit'></i>
+
+                Update Marks
+
+            </a>
+
+
+            <a
+                href="{% url 'delete_marks' get_mrk.id %}"
+                class="btn btn-danger"
+            >
+
+                <i class='bx bx-trash'></i>
+
+                Delete Marks
+
+            </a>
+
+
+            <a
+                href="{% url 'view_marks' %}"
+                class="btn btn-outline-secondary"
+            >
+
+                Back
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

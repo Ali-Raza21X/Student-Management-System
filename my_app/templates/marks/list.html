@@ -1,0 +1,294 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Marks
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Academic Records
+            </span>
+
+            <h1>
+                Marks & Results
+            </h1>
+
+            <p class="text-muted mb-0">
+                View and manage student examination results.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'add_marks' %}"
+            class="btn btn-primary"
+        >
+
+            <i class='bx bx-plus'></i>
+
+            Add Marks
+
+        </a>
+
+    </div>
+
+
+    <!-- MARKS TABLE -->
+
+    <div class="dashboard-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Examination Records
+                </h3>
+
+                <span>
+                    All recorded student marks
+                </span>
+
+            </div>
+
+
+            <span class="badge bg-primary">
+
+                {{ get_mrk|length }} Records
+
+            </span>
+
+        </div>
+
+
+        <div class="dashboard-table">
+
+            <table class="table table-hover align-middle mb-0 marks-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Student
+                        </th>
+
+                        <th>
+                            Subject
+                        </th>
+
+                        <th>
+                            Exam
+                        </th>
+
+                        <th>
+                            Marks
+                        </th>
+
+                        <th>
+                            Percentage
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for x in get_mrk %}
+
+                    <tr>
+
+                        <!-- STUDENT -->
+
+                        <td>
+
+                            <div class="d-flex align-items-center gap-2">
+
+                                <div class="table-icon">
+
+                                    <i class='bx bxs-user'></i>
+
+                                </div>
+
+                                <strong>
+                                    {{ x.student }}
+                                </strong>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- SUBJECT -->
+
+                        <td>
+
+                            <i class='bx bx-book-open text-muted'></i>
+
+                            {{ x.subject }}
+
+                        </td>
+
+
+                        <!-- EXAM -->
+
+                        <td>
+
+                            <span class="badge bg-light text-dark">
+
+                                {{ x.exam_name }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- MARKS -->
+
+                        <td>
+
+                            <strong>
+                                {{ x.obtain_marks }}
+                            </strong>
+
+                            <span class="text-muted">
+                                / {{ x.total_marks }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- PERCENTAGE -->
+
+                        <td>
+
+                            {% widthratio x.obtain_marks x.total_marks 100 %}%
+
+                        </td>
+
+
+                        <!-- ACTIONS -->
+
+                        <td>
+
+                            
+
+    <div class="action-buttons">
+
+        <!-- VIEW -->
+        <a
+            href="{% url 'detail_marks' x.id %}"
+            class="action-btn view-btn"
+            title="View Marks"
+        >
+            <i class='bx bx-show'></i>
+        </a>
+
+
+        <!-- UPDATE -->
+        <a
+            href="{% url 'update_marks' x.id %}"
+            class="action-btn edit-btn"
+            title="Update Marks"
+        >
+            <i class='bx bx-edit'></i>
+        </a>
+
+
+        <!-- DELETE -->
+        <a
+            href="{% url 'delete_marks' x.id %}"
+            class="action-btn delete-btn"
+            title="Delete Marks"
+        >
+            <i class='bx bx-trash'></i>
+        </a>
+
+    </div>
+
+</td>
+
+                        
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="text-center py-5"
+                        >
+
+                            <i
+                                class='bx bx-bar-chart-alt-2'
+                                style="font-size:45px;color:#94a3b8;"
+                            ></i>
+
+                            <h5 class="mt-2">
+                                No Marks Found
+                            </h5>
+
+                            <p class="text-muted mb-3">
+                                No examination results have been recorded yet.
+                            </p>
+
+                            <a
+                                href="{% url 'add_marks' %}"
+                                class="btn btn-primary"
+                            >
+
+                                <i class='bx bx-plus'></i>
+
+                                Add First Result
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    {% if message %}
+
+    <div class="alert alert-info mt-3">
+
+        <i class='bx bx-info-circle'></i>
+
+        {{ message }}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

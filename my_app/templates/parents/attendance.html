@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Child Attendance
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Parent Portal
+            </span>
+
+            <h1>
+                Child Attendance
+            </h1>
+
+            <p class="text-muted mb-0">
+                Attendance history for {{ student.name }}
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'parent_dashboard' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Dashboard
+
+        </a>
+
+    </div>
+
+
+    <!-- STUDENT SUMMARY -->
+
+    <div class="dashboard-panel mb-4">
+
+        <div class="child-summary">
+
+            <div class="child-summary-content">
+
+                <div class="profile-avatar">
+
+                    <i class='bx bxs-user'></i>
+
+                </div>
+
+
+                <div>
+
+                    <small class="text-muted">
+                        Student
+                    </small>
+
+                    <h3 class="mb-1">
+                        {{ student.name }}
+                    </h3>
+
+                    <p class="mb-0">
+
+                        Roll No:
+                        <strong>{{ student.roll_no }}</strong>
+
+                        <span class="mx-2">•</span>
+
+                        Class:
+                        <strong>{{ student.school_class }}</strong>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ATTENDANCE TABLE -->
+
+    <div class="dashboard-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Attendance Records
+                </h3>
+
+                <span>
+                    Complete attendance history
+                </span>
+
+            </div>
+
+
+            <span class="badge bg-primary">
+
+                {{ attendance|length }} Records
+
+            </span>
+
+        </div>
+
+
+        <div class="dashboard-table">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for record in attendance %}
+
+                    <tr>
+
+                        <td>
+
+                            <strong>
+                                {{ record.date }}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            {% if record.status %}
+
+                                <span class="badge bg-success">
+
+                                    <i class='bx bx-check'></i>
+
+                                    Present
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-danger">
+
+                                    <i class='bx bx-x'></i>
+
+                                    Absent
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td
+                            colspan="2"
+                            class="text-center py-5"
+                        >
+
+                            <i
+                                class='bx bx-calendar-x'
+                                style="font-size:42px;color:#94a3b8;"
+                            ></i>
+
+                            <h5 class="mt-2">
+                                No Attendance Records
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                No attendance has been recorded for this student yet.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="quick-actions">
+
+            <a
+                href="{% url 'parent_marks' %}"
+                class="quick-action success"
+            >
+
+                <i class='bx bx-book-open'></i>
+
+                <div>
+
+                    <strong>
+                        Marks
+                    </strong>
+
+                    <small>
+                        View examination results
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <a
+                href="{% url 'parent_report_card' %}"
+                class="quick-action warning"
+            >
+
+                <i class='bx bx-file'></i>
+
+                <div>
+
+                    <strong>
+                        Report Card
+                    </strong>
+
+                    <small>
+                        View complete performance
+                    </small>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

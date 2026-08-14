@@ -1,0 +1,488 @@
+{% extends "base.html" %}
+
+{% block title %}
+    My Report Card
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ===================================================== -->
+
+    <div class="page-title">
+
+        <div>
+
+            <h1>
+                My Report Card
+            </h1>
+
+            <p class="text-muted mb-0">
+                Academic performance and attendance overview
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'student_dashboard' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Dashboard
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         STUDENT INFORMATION
+    ===================================================== -->
+
+    <div class="profile-card mb-4">
+
+        <div class="row align-items-center">
+
+
+            <div class="col-md-2 text-center">
+
+                <div class="profile-avatar">
+
+                    <i class='bx bxs-user'></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-10">
+
+                <h2 class="mb-2">
+                    {{ student.name }}
+                </h2>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+
+                        <small class="text-muted">
+                            Roll Number
+                        </small>
+
+                        <div class="fw-semibold">
+                            {{ student.roll_no }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <small class="text-muted">
+                            Class
+                        </small>
+
+                        <div>
+
+                            <span class="badge bg-primary">
+                                {{ student.school_class }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <small class="text-muted">
+                            Student
+                        </small>
+
+                        <div class="fw-semibold">
+                            Active
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MARKS
+    ===================================================== -->
+
+    <div class="dashboard-panel mb-4">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Examination Results
+                </h3>
+
+                <span>
+                    Recorded marks by subject and examination
+                </span>
+
+            </div>
+
+
+            <span class="badge bg-success">
+
+                {{ marks|length }} Records
+
+            </span>
+
+        </div>
+
+
+        <div class="dashboard-table">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Subject
+                        </th>
+
+                        <th>
+                            Exam
+                        </th>
+
+                        <th>
+                            Obtained
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for mark in marks %}
+
+                    <tr>
+
+
+                        <td>
+
+                            <strong>
+                                {{ mark.subject }}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            {% if mark.exam_name == "Mid" %}
+
+                                <span class="badge bg-warning text-dark">
+                                    Mid Term
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-primary">
+                                    Final Term
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                {{ mark.obtain_marks }}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+                            {{ mark.total_marks }}
+                        </td>
+
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="text-center py-5"
+                        >
+
+                            <i
+                                class='bx bx-book-open'
+                                style="font-size:40px;color:#94a3b8;"
+                            ></i>
+
+                            <h5 class="mt-2">
+                                No Marks Available
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                No examination marks have been recorded yet.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ATTENDANCE
+    ===================================================== -->
+
+    <div class="dashboard-panel">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Attendance
+                </h3>
+
+                <span>
+                    Your attendance history
+                </span>
+
+            </div>
+
+
+            <span class="badge bg-primary">
+
+                {{ attendance|length }} Records
+
+            </span>
+
+        </div>
+
+
+        <div class="dashboard-table">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for record in attendance %}
+
+                    <tr>
+
+
+                        <td>
+
+                            <strong>
+                                {{ record.date }}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            {% if record.attandence %}
+
+                                <span class="badge bg-success">
+
+                                    <i class='bx bx-check'></i>
+
+                                    Present
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-danger">
+
+                                    <i class='bx bx-x'></i>
+
+                                    Absent
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td
+                            colspan="2"
+                            class="text-center py-5"
+                        >
+
+                            <i
+                                class='bx bx-calendar-x'
+                                style="font-size:40px;color:#94a3b8;"
+                            ></i>
+
+                            <h5 class="mt-2">
+                                No Attendance Records
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                No attendance records have been recorded yet.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ===================================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="quick-actions">
+
+
+            <a
+                href="{% url 'student_marks' %}"
+                class="quick-action success"
+            >
+
+                <i class='bx bx-book-open'></i>
+
+                <div>
+
+                    <strong>
+                        My Marks
+                    </strong>
+
+                    <small>
+                        View examination results
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <a
+                href="{% url 'student_attendance' %}"
+                class="quick-action warning"
+            >
+
+                <i class='bx bx-calendar-check'></i>
+
+                <div>
+
+                    <strong>
+                        My Attendance
+                    </strong>
+
+                    <small>
+                        View attendance records
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <a
+                href="{% url 'student_profile' %}"
+                class="quick-action"
+            >
+
+                <i class='bx bx-user'></i>
+
+                <div>
+
+                    <strong>
+                        My Profile
+                    </strong>
+
+                    <small>
+                        View personal information
+                    </small>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

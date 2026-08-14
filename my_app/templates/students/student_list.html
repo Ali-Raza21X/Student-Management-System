@@ -1,0 +1,340 @@
+{% extends "base.html" %}
+
+{% block title %}Students | Student Management System{% endblock %}
+
+
+{% block content %}
+
+<div class="page-section">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ===================================================== -->
+
+    <div class="page-title">
+
+        <div>
+
+            <h1>
+                Students
+            </h1>
+
+            <p class="text-muted mb-0">
+                Manage all registered students
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'add_student' %}"
+            class="btn btn-primary"
+        >
+
+            <i class='bx bx-plus'></i>
+
+            Add Student
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         STUDENT LIST PANEL
+    ===================================================== -->
+
+    <div class="dashboard-panel">
+
+
+        <!-- PANEL HEADER -->
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Student Records
+                </h3>
+
+                <span>
+                    All students currently registered
+                </span>
+
+            </div>
+
+
+            <span class="badge bg-primary">
+
+                {{ data|length }} Students
+
+            </span>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TABLE
+        ================================================= -->
+
+        <div class="dashboard-table">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Roll No
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Phone
+                        </th>
+
+                        <th>
+                            Class
+                        </th>
+
+                        <th>
+                            Age
+                        </th>
+
+                        <th>
+                            Date Enrolled
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for x in data %}
+
+                    <tr>
+
+
+                        <!-- ROLL NUMBER -->
+
+                        <td>
+
+                            <strong>
+                                {{ x.roll_no }}
+                            </strong>
+
+                        </td>
+
+
+                        <!-- NAME -->
+
+                        <td>
+
+                            {{ x.name }}
+
+                        </td>
+
+
+                        <!-- EMAIL -->
+
+                        <td>
+
+                            {{ x.email }}
+
+                        </td>
+
+
+                        <!-- PHONE -->
+
+                        <td>
+
+                            {{ x.phone }}
+
+                        </td>
+
+
+                        <!-- CLASS -->
+
+                        <td>
+
+                            <span class="badge bg-light text-dark">
+
+                                {{ x.school_class }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- AGE -->
+
+                        <td>
+
+                            {{ x.age }}
+
+                        </td>
+
+
+                        <!-- DATE -->
+
+                        <td>
+
+                            {{ x.create_at }}
+
+                        </td>
+
+
+                        <!-- ACTIONS -->
+
+                        <td>
+
+                            <div class="action-buttons">
+
+
+                                <!-- VIEW -->
+
+                                <a
+                                    href="{% url 'student_detail' x.roll_no %}"
+                                    class="action-btn view-btn"
+                                    title="View Student"
+                                >
+
+                                    <i class='bx bx-show'></i>
+
+                                </a>
+
+
+                                <!-- UPDATE -->
+
+                                <a
+                                    href="{% url 'update_detail' x.roll_no %}"
+                                    class="action-btn edit-btn"
+                                    title="Update Student"
+                                >
+
+                                    <i class='bx bx-edit'></i>
+
+                                </a>
+
+
+                                <!-- DELETE -->
+
+                                <a
+                                    href="{% url 'delete_detail' x.roll_no %}"
+                                    class="action-btn delete-btn"
+                                    title="Delete Student"
+                                >
+
+                                    <i class='bx bx-trash'></i>
+
+                                </a>
+
+
+                                <!-- REPORT CARD -->
+
+                                <a
+                                    href="{% url 'report_card' x.id %}"
+                                    class="action-btn"
+                                    style="background:#7c3aed;"
+                                    title="Report Card"
+                                >
+
+                                    <i class='bx bx-file'></i>
+
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <!-- EMPTY STATE -->
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="text-center py-5"
+                        >
+
+                            <i
+                                class='bx bx-user-x'
+                                style="font-size:45px;color:#94a3b8;"
+                            ></i>
+
+                            <h5 class="mt-2">
+                                No Students Found
+                            </h5>
+
+                            <p class="text-muted mb-3">
+                                There are currently no students registered.
+                            </p>
+
+                            <a
+                                href="{% url 'add_student' %}"
+                                class="btn btn-primary"
+                            >
+
+                                <i class='bx bx-plus'></i>
+
+                                Add First Student
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MESSAGE
+    ===================================================== -->
+
+    {% if message %}
+
+    <div class="alert alert-info mt-3">
+
+        <i class='bx bx-info-circle'></i>
+
+        {{ message }}
+
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

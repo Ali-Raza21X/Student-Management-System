@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add Teacher
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Administration
+            </span>
+
+            <h1>
+                Add Teacher
+            </h1>
+
+            <p class="text-muted mb-0">
+                Register a new teacher in the school system.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'view_teachers' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Teachers
+
+        </a>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div class="dashboard-panel form-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Teacher Information
+                </h3>
+
+                <span>
+                    Enter the teacher's details below
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <form method="post" class="management-form">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+
+            <!-- FORM ACTIONS -->
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                >
+
+                    <i class='bx bx-user-plus'></i>
+
+                    Add Teacher
+
+                </button>
+
+
+                <a
+                    href="{% url 'view_teachers' %}"
+                    class="btn btn-outline-secondary"
+                >
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

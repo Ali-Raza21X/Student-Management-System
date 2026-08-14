@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Delete Subject
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Administration
+            </span>
+
+            <h1>
+                Delete Subject
+            </h1>
+
+            <p class="text-muted mb-0">
+                Permanently remove this subject from the system.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'view_subject' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Subjects
+
+        </a>
+
+    </div>
+
+
+    <!-- DELETE CONFIRMATION -->
+
+    <div class="dashboard-panel delete-panel">
+
+        <div class="delete-icon">
+
+            <i class='bx bx-trash'></i>
+
+        </div>
+
+
+        <h2>
+            Delete Subject?
+        </h2>
+
+
+        <p class="delete-message">
+
+            Are you sure you want to delete
+
+            <strong>
+                {{ subject.subject_name }}
+            </strong>
+
+            from the system?
+
+        </p>
+
+
+        <div class="delete-warning">
+
+            <i class='bx bx-error-circle'></i>
+
+            <span>
+                This action cannot be undone.
+            </span>
+
+        </div>
+
+
+        <form method="POST" class="delete-form">
+
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="btn btn-danger"
+            >
+
+                <i class='bx bx-trash'></i>
+
+                Yes, Delete Subject
+
+            </button>
+
+
+            <a
+                href="{% url 'view_subject' %}"
+                class="btn btn-outline-secondary"
+            >
+
+                Cancel
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

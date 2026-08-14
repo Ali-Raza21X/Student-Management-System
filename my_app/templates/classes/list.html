@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Classes
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ===================================================== -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Administration
+            </span>
+
+            <h1>
+                Classes
+            </h1>
+
+            <p class="text-muted mb-0">
+                Manage school classes, sections and rooms.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'add_class' %}"
+            class="btn btn-primary"
+        >
+
+            <i class='bx bx-plus'></i>
+
+            Add Class
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         CLASS TABLE
+    ===================================================== -->
+
+    <div class="dashboard-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Class Records
+                </h3>
+
+                <span>
+                    All registered classes
+                </span>
+
+            </div>
+
+
+            <span class="badge bg-primary">
+
+                {{ class_data|length }} Classes
+
+            </span>
+
+        </div>
+
+
+        <div class="dashboard-table">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Class
+                        </th>
+
+                        <th>
+                            Section
+                        </th>
+
+                        <th>
+                            Room No
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for x in class_data %}
+
+                    <tr>
+
+                        <td>
+
+                            <strong>
+                                {{ x.school_class }}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="badge bg-light text-dark">
+
+                                {{ x.section }}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <i class='bx bx-door-open text-muted'></i>
+
+                            {{ x.room_no }}
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+    <!-- VIEW -->
+    <a
+        href="{% url 'class_detail' x.id %}"
+        class="action-btn view-btn"
+        title="View Class"
+    >
+        <i class='bx bx-show'></i>
+    </a>
+
+
+    <!-- UPDATE -->
+    <a
+        href="{% url 'class_update' x.id %}"
+        class="action-btn edit-btn"
+        title="Update Class"
+    >
+        <i class='bx bx-edit'></i>
+    </a>
+
+
+    <!-- DELETE -->
+    <a
+        href="{% url 'class_delete' x.id %}"
+        class="action-btn delete-btn"
+        title="Delete Class"
+    >
+        <i class='bx bx-trash'></i>
+    </a>
+
+</div>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="text-center py-5"
+                        >
+
+                            <i
+                                class='bx bx-building'
+                                style="font-size:45px;color:#94a3b8;"
+                            ></i>
+
+                            <h5 class="mt-2">
+                                No Classes Found
+                            </h5>
+
+                            <p class="text-muted mb-3">
+                                No school classes have been registered yet.
+                            </p>
+
+                            <a
+                                href="{% url 'add_class' %}"
+                                class="btn btn-primary"
+                            >
+
+                                <i class='bx bx-plus'></i>
+
+                                Add First Class
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    {% if message %}
+
+    <div class="alert alert-info mt-3">
+
+        <i class='bx bx-info-circle'></i>
+
+        {{ message }}
+
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

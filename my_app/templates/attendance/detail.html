@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Attendance Details
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Academic Records
+            </span>
+
+            <h1>
+                Attendance Details
+            </h1>
+
+            <p class="text-muted mb-0">
+                View the attendance record for this student.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'view_attend' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Attendance
+
+        </a>
+
+    </div>
+
+
+    <!-- ATTENDANCE DETAILS -->
+
+    <div class="dashboard-panel">
+
+        <div class="teacher-profile-header">
+
+            <div class="profile-avatar">
+
+                <i class='bx bx-calendar-check'></i>
+
+            </div>
+
+
+            <div>
+
+                <span class="text-muted">
+                    Student
+                </span>
+
+                <h2>
+                    {{ get_atd.student }}
+                </h2>
+
+
+                {% if get_atd.status %}
+
+                    <span class="badge bg-success">
+
+                        <i class='bx bx-check'></i>
+
+                        Present
+
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+
+                        <i class='bx bx-x'></i>
+
+                        Absent
+
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="teacher-information">
+
+            <div class="info-box">
+
+                <small class="text-muted">
+                    Student
+                </small>
+
+                <strong>
+                    <i class='bx bxs-user text-muted'></i>
+                    {{ get_atd.student }}
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small class="text-muted">
+                    Attendance Status
+                </small>
+
+                <strong>
+
+                    {% if get_atd.status %}
+
+                        <span class="text-success">
+                            <i class='bx bx-check-circle'></i>
+                            Present
+                        </span>
+
+                    {% else %}
+
+                        <span class="text-danger">
+                            <i class='bx bx-x-circle'></i>
+                            Absent
+                        </span>
+
+                    {% endif %}
+
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small class="text-muted">
+                    Date
+                </small>
+
+                <strong>
+                    <i class='bx bx-calendar text-muted'></i>
+                    {{ get_atd.date }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="teacher-detail-actions">
+
+            <a
+                href="{% url 'update_attend' get_atd.id %}"
+                class="btn btn-update"
+            >
+
+                <i class='bx bx-edit'></i>
+
+                Update Attendance
+
+            </a>
+
+
+            <a
+                href="{% url 'delete_attend' get_atd.id %}"
+                class="btn btn-delete"
+            >
+
+                <i class='bx bx-trash'></i>
+
+                Delete Attendance
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

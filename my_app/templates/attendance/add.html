@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add Attendance
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Academic Records
+            </span>
+
+            <h1>
+                Record Attendance
+            </h1>
+
+            <p class="text-muted mb-0">
+                Mark attendance for a student.
+            </p>
+
+        </div>
+
+        <a
+            href="{% url 'view_attend' %}"
+            class="btn btn-outline-secondary"
+        >
+            <i class='bx bx-arrow-back'></i>
+            Attendance
+        </a>
+
+    </div>
+
+
+    <!-- ATTENDANCE FORM -->
+
+    <div class="dashboard-panel form-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Attendance Information
+                </h3>
+
+                <span>
+                    Select the student and attendance status.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <form method="post" class="management-form">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+
+                    <i class='bx bx-calendar-check'></i>
+
+                    Save Attendance
+
+                </button>
+
+
+                <a
+                    href="{% url 'view_attend' %}"
+                    class="btn btn-outline-secondary"
+                >
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

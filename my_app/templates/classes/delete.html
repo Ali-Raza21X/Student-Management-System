@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Delete Class
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Administration
+            </span>
+
+            <h1>
+                Delete Class
+            </h1>
+
+            <p class="text-muted mb-0">
+                Permanently remove this class from the system.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'view_class' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Classes
+
+        </a>
+
+    </div>
+
+
+    <!-- DELETE CONFIRMATION -->
+
+    <div class="dashboard-panel delete-panel">
+
+        <div class="delete-icon">
+
+            <i class='bx bx-trash'></i>
+
+        </div>
+
+
+        <h2>
+            Delete Class?
+        </h2>
+
+
+        <p class="delete-message">
+
+            Are you sure you want to delete
+
+            <strong>
+                {{ classs.school_class }}
+            </strong>
+
+            from the system?
+
+        </p>
+
+
+        <div class="delete-warning">
+
+            <i class='bx bx-error-circle'></i>
+
+            <span>
+                This action cannot be undone.
+            </span>
+
+        </div>
+
+
+        <form method="POST" class="delete-form">
+
+            {% csrf_token %}
+
+
+            <button
+                type="submit"
+                class="btn btn-danger"
+            >
+
+                <i class='bx bx-trash'></i>
+
+                Yes, Delete Class
+
+            </button>
+
+
+            <a
+                href="{% url 'view_class' %}"
+                class="btn btn-outline-secondary"
+            >
+
+                Cancel
+
+            </a>
+
+        </form>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

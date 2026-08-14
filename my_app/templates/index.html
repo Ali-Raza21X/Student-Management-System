@@ -1,0 +1,925 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    StudentMS | Home
+{% endblock %}
+
+
+{% block content %}
+
+<div class="public-home">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="home-hero">
+
+        <div class="hero-background-shape shape-one"></div>
+        <div class="hero-background-shape shape-two"></div>
+
+
+        <div class="hero-content">
+
+            <div class="hero-text reveal">
+
+                <span class="hero-badge">
+                    <i class='bx bxs-star'></i>
+                    Excellence in Education
+                </span>
+
+
+                <h1>
+                    Building
+                    <span class="hero-highlight">
+                        Brighter Futures
+                    </span>
+                    Together
+                </h1>
+
+
+                <p class="hero-description">
+
+                    A modern school management experience designed
+                    to connect students, teachers and parents while
+                    keeping academic information simple and organized.
+
+                </p>
+
+
+                <!-- DYNAMIC TEXT -->
+
+                <div class="hero-dynamic-text">
+
+                    <span>We empower</span>
+
+                    <strong id="dynamicText">
+                        Future Leaders
+                    </strong>
+
+                </div>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="{% url 'login' %}"
+                        class="hero-btn primary"
+                    >
+
+                        <i class='bx bx-log-in'></i>
+
+                        Login to Portal
+
+                    </a>
+
+
+                    <a
+                        href="#about"
+                        class="hero-btn secondary"
+                    >
+
+                        Discover More
+
+                        <i class='bx bx-right-arrow-alt'></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+
+            <div class="hero-visual reveal">
+
+                <div class="hero-image-card">
+
+                    <div class="school-building">
+
+                        <div class="school-roof"></div>
+
+                        <div class="school-main">
+
+                            <div class="school-sign">
+                                STUDENTMS
+                            </div>
+
+
+                            <div class="school-windows">
+
+                                <span></span>
+                                <span></span>
+                                <span></span>
+
+                            </div>
+
+
+                            <div class="school-door"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Floating cards -->
+
+                    <div class="floating-card floating-students">
+
+                        <div class="floating-icon">
+                            <i class='bx bxs-graduation'></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                {{ student_count }}+
+                            </strong>
+
+                            <small>
+                                Students
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="floating-card floating-success">
+
+                        <div class="success-circle">
+                            <i class='bx bx-award'></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                95%
+                            </strong>
+
+                            <small>
+                                Success Rate
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <section class="home-stats">
+
+        <div class="stats-container">
+
+
+            <div class="home-stat reveal">
+
+                <i class='bx bxs-graduation'></i>
+
+                <div>
+
+                    <h2
+                        class="counter"
+                        data-target="{{ student_count }}"
+                    >
+                        0
+                    </h2>
+
+                    <span>
+                        Students
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-stat reveal">
+
+                <i class='bx bxs-user-badge'></i>
+
+                <div>
+
+                    <h2
+                        class="counter"
+                        data-target="{{ teacher_count }}"
+                    >
+                        0
+                    </h2>
+
+                    <span>
+                        Teachers
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-stat reveal">
+
+                <i class='bx bx-building'></i>
+
+                <div>
+
+                    <h2
+                        class="counter"
+                        data-target="{{ classes_count }}"
+                    >
+                        0
+                    </h2>
+
+                    <span>
+                        Classes
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-stat reveal">
+
+                <i class='bx bx-book-open'></i>
+
+                <div>
+
+                    <h2
+                        class="counter"
+                        data-target="{{ subjects_count }}"
+                    >
+                        0
+                    </h2>
+
+                    <span>
+                        Subjects
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section
+        class="home-section about-section"
+        id="about"
+    >
+
+        <div class="about-grid">
+
+
+            <div class="about-visual reveal">
+
+                <div class="about-main-card">
+
+                    <div class="about-icon-large">
+                        <i class='bx bxs-school'></i>
+                    </div>
+
+                    <h3>
+                        Learn.
+                        Grow.
+                        Succeed.
+                    </h3>
+
+                    <p>
+                        Creating an environment where every
+                        student can discover their potential.
+                    </p>
+
+                </div>
+
+
+                <div class="about-small-card">
+
+                    <i class='bx bx-trophy'></i>
+
+                    <strong>
+                        Excellence
+                    </strong>
+
+                    <span>
+                        Our commitment
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-content reveal">
+
+                <span class="section-label">
+                    ABOUT OUR SCHOOL
+                </span>
+
+                <h2>
+                    Education that prepares
+                    students for tomorrow.
+                </h2>
+
+                <p>
+
+                    Our school combines academic learning,
+                    personal development and modern technology
+                    to create a complete educational experience.
+
+                </p>
+
+                <p>
+
+                    StudentMS helps bring the entire academic
+                    community together by providing organized
+                    access to students, teachers, attendance,
+                    marks and academic records.
+
+                </p>
+
+
+                <div class="about-points">
+
+                    <div>
+
+                        <i class='bx bx-check-circle'></i>
+
+                        <span>
+                            Student-focused learning
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class='bx bx-check-circle'></i>
+
+                        <span>
+                            Experienced teachers
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class='bx bx-check-circle'></i>
+
+                        <span>
+                            Modern academic management
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class='bx bx-check-circle'></i>
+
+                        <span>
+                            Strong parent involvement
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WHY CHOOSE US
+    ====================================================== -->
+
+    <section class="home-section features-section">
+
+        <div class="section-heading reveal">
+
+            <span class="section-label">
+                WHY CHOOSE US
+            </span>
+
+            <h2>
+                More than a school.
+                A community.
+            </h2>
+
+            <p>
+                Everything designed around student success.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon blue">
+                    <i class='bx bxs-graduation'></i>
+                </div>
+
+                <h3>
+                    Student Success
+                </h3>
+
+                <p>
+                    Helping students develop the knowledge,
+                    confidence and skills needed for their future.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon green">
+                    <i class='bx bxs-user-check'></i>
+                </div>
+
+                <h3>
+                    Expert Teachers
+                </h3>
+
+                <p>
+                    Dedicated educators committed to helping
+                    every student reach their potential.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon orange">
+                    <i class='bx bx-line-chart'></i>
+                </div>
+
+                <h3>
+                    Track Progress
+                </h3>
+
+                <p>
+                    Monitor academic performance and attendance
+                    through organized digital records.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon purple">
+                    <i class='bx bx-shield-quarter'></i>
+                </div>
+
+                <h3>
+                    Secure Records
+                </h3>
+
+                <p>
+                    Keep important academic information organized
+                    and accessible to authorized users.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ACHIEVEMENTS
+    ====================================================== -->
+
+    <section class="achievement-section">
+
+        <div class="achievement-overlay"></div>
+
+        <div class="achievement-content">
+
+            <div class="section-heading light reveal">
+
+                <span class="section-label">
+                    OUR ACHIEVEMENTS
+                </span>
+
+                <h2>
+                    Every achievement
+                    starts with a dream.
+                </h2>
+
+            </div>
+
+
+            <div class="achievement-grid">
+
+
+                <div class="achievement-card reveal">
+
+                    <i class='bx bx-award'></i>
+
+                    <h3>
+                        95%
+                    </h3>
+
+                    <p>
+                        Academic Success
+                    </p>
+
+                </div>
+
+
+                <div class="achievement-card reveal">
+
+                    <i class='bx bx-medal'></i>
+
+                    <h3>
+                        25+
+                    </h3>
+
+                    <p>
+                        Academic Awards
+                    </p>
+
+                </div>
+
+
+                <div class="achievement-card reveal">
+
+                    <i class='bx bx-star'></i>
+
+                    <h3>
+                        10+
+                    </h3>
+
+                    <p>
+                        Years of Excellence
+                    </p>
+
+                </div>
+
+
+                <div class="achievement-card reveal">
+
+                    <i class='bx bx-group'></i>
+
+                    <h3>
+                        100%
+                    </h3>
+
+                    <p>
+                        Community Commitment
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SCHOOL LIFE
+    ====================================================== -->
+
+    <section class="home-section life-section">
+
+        <div class="section-heading reveal">
+
+            <span class="section-label">
+                SCHOOL LIFE
+            </span>
+
+            <h2>
+                A place to learn,
+                explore and grow.
+            </h2>
+
+        </div>
+
+
+        <div class="life-grid">
+
+
+            <div class="life-card large reveal">
+
+                <div class="life-visual classroom">
+
+                    <i class='bx bxs-school'></i>
+
+                    <span>
+                        Modern Classrooms
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="life-card reveal">
+
+                <div class="life-visual library">
+
+                    <i class='bx bxs-book'></i>
+
+                    <span>
+                        Learning & Library
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="life-card reveal">
+
+                <div class="life-visual activities">
+
+                    <i class='bx bx-football'></i>
+
+                    <span>
+                        Sports & Activities
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="life-card large reveal">
+
+                <div class="life-visual technology">
+
+                    <i class='bx bx-desktop'></i>
+
+                    <span>
+                        Technology & Innovation
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="home-cta">
+
+        <div class="cta-content reveal">
+
+            <span class="section-label">
+                JOIN OUR COMMUNITY
+            </span>
+
+            <h2>
+                Ready to begin
+                your journey?
+            </h2>
+
+            <p>
+                Access the StudentMS portal and stay connected
+                with your academic journey.
+            </p>
+
+
+            <a
+                href="{% url 'login' %}"
+                class="cta-button"
+            >
+
+                Enter Student Portal
+
+                <i class='bx bx-right-arrow-alt'></i>
+
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<!-- =====================================================
+     HOME PAGE ANIMATION JAVASCRIPT
+====================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* ==============================================
+       DYNAMIC HERO TEXT
+    =============================================== */
+
+    const dynamicText = document.getElementById("dynamicText");
+
+    const words = [
+        "Future Leaders",
+        "Young Innovators",
+        "Confident Thinkers",
+        "Successful Students"
+    ];
+
+    let wordIndex = 0;
+
+
+    setInterval(function () {
+
+        dynamicText.classList.add("text-changing");
+
+        setTimeout(function () {
+
+            wordIndex =
+                (wordIndex + 1) % words.length;
+
+            dynamicText.textContent =
+                words[wordIndex];
+
+            dynamicText.classList.remove(
+                "text-changing"
+            );
+
+        }, 350);
+
+    }, 2800);
+
+
+
+    /* ==============================================
+       COUNTER ANIMATION
+    =============================================== */
+
+    const counters =
+        document.querySelectorAll(".counter");
+
+    const counterObserver =
+        new IntersectionObserver(
+            function (entries, observer) {
+
+                entries.forEach(function (entry) {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    const counter =
+                        entry.target;
+
+                    const target =
+                        Number(
+                            counter.dataset.target
+                        );
+
+                    let current = 0;
+
+                    const duration = 1600;
+
+                    const increment =
+                        Math.max(
+                            target / 60,
+                            1
+                        );
+
+
+                    function updateCounter() {
+
+                        current += increment;
+
+                        if (current >= target) {
+
+                            counter.textContent =
+                                target.toLocaleString();
+
+                            return;
+
+                        }
+
+                        counter.textContent =
+                            Math.floor(
+                                current
+                            ).toLocaleString();
+
+                        requestAnimationFrame(
+                            updateCounter
+                        );
+
+                    }
+
+                    updateCounter();
+
+                    observer.unobserve(counter);
+
+                });
+
+            },
+            {
+                threshold: 0.5
+            }
+        );
+
+
+    counters.forEach(function (counter) {
+
+        counterObserver.observe(counter);
+
+    });
+
+
+
+    /* ==============================================
+       SCROLL REVEAL
+    =============================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+        new IntersectionObserver(
+            function (entries, observer) {
+
+                entries.forEach(function (entry) {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    entry.target.classList.add(
+                        "revealed"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(function (element) {
+
+        revealObserver.observe(element);
+
+    });
+
+});
+
+</script>
+
+
+{% endblock %}

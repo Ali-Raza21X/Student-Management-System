@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Parent Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section parent-dashboard">
+
+
+    <!-- =====================================================
+         WELCOME HEADER
+    ===================================================== -->
+
+    <div class="dashboard-heading">
+
+        <div>
+
+            <span class="text-muted">
+                Parent Portal
+            </span>
+
+            <h1>
+                Parent Dashboard
+            </h1>
+
+            <p>
+                Monitor your child's academic performance and attendance.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CHILD INFORMATION
+    ===================================================== -->
+
+    <div class="dashboard-panel child-summary">
+
+        <div class="child-summary-content">
+
+            <div class="profile-avatar">
+
+                <i class='bx bxs-user'></i>
+
+            </div>
+
+
+            <div>
+
+                <span class="text-muted">
+                    Your Child
+                </span>
+
+                <h2>
+                    {{ parent.student.name }}
+                </h2>
+
+                <p class="mb-0">
+
+                    Roll No:
+
+                    <strong>
+                        {{ parent.student.roll_no }}
+                    </strong>
+
+                    <span class="mx-2">•</span>
+
+                    Class:
+
+                    <strong>
+                        {{ parent.student.school_class }}
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         QUICK ACCESS
+    ===================================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Academic Overview
+                </h3>
+
+                <span>
+                    Quickly access your child's academic records
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
+            <!-- ATTENDANCE -->
+
+            <a
+                href="{% url 'parent_attendance' %}"
+                class="quick-action"
+            >
+
+                <i class='bx bx-calendar-check'></i>
+
+                <div>
+
+                    <strong>
+                        Attendance
+                    </strong>
+
+                    <small>
+                        View attendance records
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- MARKS -->
+
+            <a
+                href="{% url 'parent_marks' %}"
+                class="quick-action success"
+            >
+
+                <i class='bx bx-book-open'></i>
+
+                <div>
+
+                    <strong>
+                        Marks
+                    </strong>
+
+                    <small>
+                        View examination results
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- REPORT CARD -->
+
+            <a
+                href="{% url 'parent_report_card' %}"
+                class="quick-action warning"
+            >
+
+                <i class='bx bx-file'></i>
+
+                <div>
+
+                    <strong>
+                        Report Card
+                    </strong>
+
+                    <small>
+                        View complete academic performance
+                    </small>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CHILD PROFILE
+    ===================================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Child Information
+                </h3>
+
+                <span>
+                    Basic information about your child
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="row g-3 p-4">
+
+            <div class="col-md-4">
+
+                <div class="info-box mb-0">
+
+                    <small class="text-muted">
+                        Name
+                    </small>
+
+                    <div class="fw-semibold mt-1">
+                        {{ parent.student.name }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-box mb-0">
+
+                    <small class="text-muted">
+                        Roll Number
+                    </small>
+
+                    <div class="fw-semibold mt-1">
+                        {{ parent.student.roll_no }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-box mb-0">
+
+                    <small class="text-muted">
+                        Class
+                    </small>
+
+                    <div class="mt-1">
+
+                        <span class="badge bg-primary">
+                            {{ parent.student.school_class }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

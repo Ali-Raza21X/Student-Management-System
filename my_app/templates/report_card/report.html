@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}
+Report Card
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="text-center mb-4">
+        <h1>Student Report Card</h1>
+        <p class="text-muted">Academic Performance Report</p>
+    </div>
+
+
+    <!-- Student Information -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header">
+            <h4 class="mb-0">Student Information</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <strong>Name:</strong>
+                    {{ student.name }}
+                </div>
+
+                <div class="col-md-4">
+                    <strong>Roll No:</strong>
+                    {{ student.roll_no }}
+                </div>
+
+                <div class="col-md-4">
+                    <strong>Class:</strong>
+                    {{ student.school_class }}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Marks -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header">
+            <h4 class="mb-0">Academic Performance</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+                            <th>Subject</th>
+                            <th>Exam</th>
+                            <th>Obtained Marks</th>
+                            <th>Total Marks</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for mark in marks %}
+
+                        <tr>
+
+                            <td>
+                                {{ mark.subject }}
+                            </td>
+
+                            <td>
+                                {{ mark.get_exam_name_display }}
+                            </td>
+
+                            <td>
+                                {{ mark.obtain_marks }}
+                            </td>
+
+                            <td>
+                                {{ mark.total_marks }}
+                            </td>
+
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                No marks available.
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Attendance -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header">
+            <h4 class="mb-0">Attendance</h4>
+        </div>
+
+        <div class="card-body">
+
+            {% for record in attendance %}
+
+    <p>
+        {{ record.date }} -
+        {{ record.status }}
+    </p>
+
+{% empty %}
+
+    <p>No attendance records available.</p>
+
+{% endfor %}
+<hr>
+
+<h4>Attendance Summary</h4>
+
+<p>Total Days: {{ total_days }}</p>
+<p>Present: {{ present_days }}</p>
+<p>Absent: {{ absent_days }}</p>
+<p>Attendance: {{ attendance_percent }}%</p>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

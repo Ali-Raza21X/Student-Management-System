@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Subject Details
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Administration
+            </span>
+
+            <h1>
+                Subject Details
+            </h1>
+
+            <p class="text-muted mb-0">
+                View subject information and its assigned teacher.
+            </p>
+
+        </div>
+
+        <a
+            href="{% url 'view_subject' %}"
+            class="btn btn-outline-secondary"
+        >
+            <i class='bx bx-arrow-back'></i>
+            Subjects
+        </a>
+
+    </div>
+
+
+    <!-- SUBJECT DETAILS -->
+
+    <div class="dashboard-panel">
+
+        <div class="teacher-profile-header">
+
+            <div class="profile-avatar">
+
+                <i class='bx bx-book-open'></i>
+
+            </div>
+
+            <div>
+
+                <span class="text-muted">
+                    Subject
+                </span>
+
+                <h2>
+                    {{ sub.subject_name }}
+                </h2>
+
+                <span class="badge bg-primary">
+                    {{ sub.school_class }}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="teacher-information">
+
+            <div class="info-box">
+
+                <small class="text-muted">
+                    Subject Name
+                </small>
+
+                <strong>
+                    {{ sub.subject_name }}
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small class="text-muted">
+                    Class
+                </small>
+
+                <strong>
+                    <i class='bx bx-building text-muted'></i>
+                    {{ sub.school_class }}
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small class="text-muted">
+                    Assigned Teacher
+                </small>
+
+                <strong>
+                    <i class='bx bxs-user-badge text-muted'></i>
+                    {{ sub.teacher }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="teacher-detail-actions">
+
+            <a
+                href="{% url 'update_subject' sub.id %}"
+                class="btn btn-update"
+            >
+                <i class='bx bx-edit'></i>
+                Update Subject
+            </a>
+
+
+            <a
+                href="{% url 'delete_subject' sub.id %}"
+                class="btn btn-delete"
+            >
+                <i class='bx bx-trash'></i>
+                Delete Subject
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

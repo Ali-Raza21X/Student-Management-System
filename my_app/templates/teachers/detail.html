@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Teacher Details
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Administration
+            </span>
+
+            <h1>
+                Teacher Details
+            </h1>
+
+            <p class="text-muted mb-0">
+                View complete teacher information.
+            </p>
+
+        </div>
+
+        <a
+            href="{% url 'view_teachers' %}"
+            class="btn btn-outline-secondary"
+        >
+            <i class='bx bx-arrow-back'></i>
+            Teachers
+        </a>
+
+    </div>
+
+
+    <!-- TEACHER PROFILE -->
+
+    <div class="dashboard-panel">
+
+        <div class="teacher-profile-header">
+
+            <div class="profile-avatar teacher-avatar">
+
+                <i class='bx bxs-user-badge'></i>
+
+            </div>
+
+            <div>
+
+                <span class="text-muted">
+                    Employee ID
+                </span>
+
+                <h2>
+                    {{ teacher_detail.fullname }}
+                </h2>
+
+                <span class="badge bg-success">
+                    {{ teacher_detail.employee_id }}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="teacher-information">
+
+            <div class="info-box">
+                <small class="text-muted">Full Name</small>
+                <strong>{{ teacher_detail.fullname }}</strong>
+            </div>
+
+            <div class="info-box">
+                <small class="text-muted">Employee ID</small>
+                <strong>{{ teacher_detail.employee_id }}</strong>
+            </div>
+
+            <div class="info-box">
+                <small class="text-muted">Email</small>
+                <strong>{{ teacher_detail.email }}</strong>
+            </div>
+
+            <div class="info-box">
+                <small class="text-muted">Phone</small>
+                <strong>{{ teacher_detail.phone }}</strong>
+            </div>
+
+            <div class="info-box">
+                <small class="text-muted">Qualification</small>
+                <strong>{{ teacher_detail.qualification }}</strong>
+            </div>
+
+            <div class="info-box">
+                <small class="text-muted">Date Joined</small>
+                <strong>{{ teacher_detail.date_joined }}</strong>
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="teacher-detail-actions">
+
+            <a
+                href="{% url 'update_teacher' teacher_detail.employee_id %}"
+                class="btn btn-update"
+            >
+                <i class='bx bx-edit'></i>
+                Update Teacher
+            </a>
+
+            <a
+                href="{% url 'delete_teacher' teacher_detail.employee_id %}"
+                class="btn btn-delete"
+            >
+                <i class='bx bx-trash'></i>
+                Delete Teacher
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

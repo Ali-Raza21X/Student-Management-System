@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Student{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <div class="page-title">
+
+        <div>
+            <h1>Delete Student</h1>
+
+            <p class="text-muted mb-0">
+                Permanently remove this student from the system
+            </p>
+        </div>
+
+        <a href="{% url 'list_student' %}"
+           class="btn btn-outline-secondary">
+
+            <i class='bx bx-arrow-back'></i>
+            Back to Students
+
+        </a>
+
+    </div>
+
+
+    <!-- DELETE CONFIRMATION -->
+
+    <div class="dashboard-panel delete-confirmation">
+
+        <div class="text-center py-4">
+
+            <div class="delete-icon">
+
+                <i class='bx bx-trash'></i>
+
+            </div>
+
+
+            <h2 class="mt-3">
+                Are you sure?
+            </h2>
+
+            <p class="text-muted">
+                You are about to permanently delete this student.
+                This action cannot be undone.
+            </p>
+
+
+            <!-- STUDENT INFO -->
+
+            <div class="delete-student-info">
+
+                <div>
+                    <small class="text-muted">
+                        Student Name
+                    </small>
+
+                    <strong>
+                        {{ student.name }}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <small class="text-muted">
+                        Roll Number
+                    </small>
+
+                    <strong>
+                        {{ student.roll_no }}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <small class="text-muted">
+                        Class
+                    </small>
+
+                    <strong>
+                        {{ student.school_class }}
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <form method="POST"
+                  class="delete-form">
+
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="btn btn-danger">
+
+                    <i class='bx bx-trash'></i>
+                    Yes, Delete Student
+
+                </button>
+
+
+                <a
+                    href="{% url 'list_student' %}"
+                    class="btn btn-outline-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

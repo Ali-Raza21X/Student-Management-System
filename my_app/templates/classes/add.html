@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add Class
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Administration
+            </span>
+
+            <h1>
+                Add Class
+            </h1>
+
+            <p class="text-muted mb-0">
+                Create a new school class and assign its section and room.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'view_class' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Classes
+
+        </a>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div class="dashboard-panel form-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Class Information
+                </h3>
+
+                <span>
+                    Enter the class details below
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <form method="post" class="management-form">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+
+            <!-- FORM ACTIONS -->
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+
+                    <i class='bx bx-plus'></i>
+
+                    Add Class
+
+                </button>
+
+
+                <a
+                    href="{% url 'view_class' %}"
+                    class="btn btn-outline-secondary"
+                >
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

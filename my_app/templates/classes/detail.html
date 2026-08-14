@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Class Details
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Administration
+            </span>
+
+            <h1>
+                Class Details
+            </h1>
+
+            <p class="text-muted mb-0">
+                View information about this school class.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'view_class' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Classes
+
+        </a>
+
+    </div>
+
+
+    <!-- CLASS DETAILS -->
+
+    <div class="dashboard-panel">
+
+        <div class="teacher-profile-header">
+
+            <div class="profile-avatar">
+
+                <i class='bx bx-building'></i>
+
+            </div>
+
+
+            <div>
+
+                <span class="text-muted">
+                    Class
+                </span>
+
+                <h2>
+                    {{ classs.school_class }}
+                </h2>
+
+                <span class="badge bg-primary">
+                    Section {{ classs.section }}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="teacher-information">
+
+            <div class="info-box">
+
+                <small class="text-muted">
+                    Class
+                </small>
+
+                <strong>
+                    {{ classs.school_class }}
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small class="text-muted">
+                    Section
+                </small>
+
+                <strong>
+                    {{ classs.section }}
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small class="text-muted">
+                    Room Number
+                </small>
+
+                <strong>
+                    <i class='bx bx-door-open text-muted'></i>
+                    {{ classs.room_no }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="teacher-detail-actions">
+
+            <a
+                href="{% url 'class_update' classs.id %}"
+                class="btn btn-update"
+            >
+
+                <i class='bx bx-edit'></i>
+
+                Update Class
+
+            </a>
+
+
+            <a
+                href="{% url 'class_delete' classs.id %}"
+                class="btn btn-delete"
+            >
+
+                <i class='bx bx-trash'></i>
+
+                Delete Class
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

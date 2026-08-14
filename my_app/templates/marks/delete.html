@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Delete Marks
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-title">
+
+        <div>
+
+            <span class="text-muted">
+                Academic Records
+            </span>
+
+            <h1>
+                Delete Marks
+            </h1>
+
+            <p class="text-muted mb-0">
+                Remove an examination result from the system.
+            </p>
+
+        </div>
+
+        <a
+            href="{% url 'view_marks' %}"
+            class="btn btn-outline-secondary"
+        >
+            <i class='bx bx-arrow-back'></i>
+            Back to Marks
+        </a>
+
+    </div>
+
+
+    <!-- DELETE CARD -->
+
+    <div class="delete-card">
+
+        <div class="delete-icon">
+            <i class='bx bx-trash'></i>
+        </div>
+
+        <h2>
+            Delete this result?
+        </h2>
+
+        <p>
+            You are about to delete the marks record for
+            <strong>{{ get_mrk.student }}</strong>.
+        </p>
+
+        <div class="delete-info">
+
+            <div>
+                <span>Subject</span>
+                <strong>{{ get_mrk.subject }}</strong>
+            </div>
+
+            <div>
+                <span>Exam</span>
+                <strong>{{ get_mrk.exam_name }}</strong>
+            </div>
+
+            <div>
+                <span>Marks</span>
+                <strong>
+                    {{ get_mrk.obtain_marks }} / {{ get_mrk.total_marks }}
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="delete-warning">
+
+            <i class='bx bx-error-circle'></i>
+
+            <span>
+                This action cannot be undone.
+            </span>
+
+        </div>
+
+
+        <form method="POST" class="delete-form">
+
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="btn btn-danger"
+            >
+                <i class='bx bx-trash'></i>
+                Yes, Delete Marks
+            </button>
+
+            <a
+                href="{% url 'view_marks' %}"
+                class="btn btn-outline-secondary"
+            >
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Student Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+<div class="page-section student-dashboard">
+
+
+    <!-- =====================================================
+         WELCOME HEADER
+    ===================================================== -->
+
+    <div class="dashboard-heading">
+
+        <div>
+
+            <span class="text-muted">
+                Student Portal
+            </span>
+
+            <h1>
+                Welcome, {{ student.name }}
+            </h1>
+
+            <p>
+                View your academic information, attendance and report card.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         STUDENT BASIC INFORMATION
+    ===================================================== -->
+
+    <div class="dashboard-stats">
+
+
+        <!-- ROLL NUMBER -->
+
+        <div class="dashboard-stat stat-students">
+
+            <div class="stat-icon">
+
+                <i class='bx bx-id-card'></i>
+
+            </div>
+
+            <h3>
+                {{ student.roll_no }}
+            </h3>
+
+            <span>
+                Roll Number
+            </span>
+
+        </div>
+
+
+        <!-- CLASS -->
+
+        <div class="dashboard-stat stat-classes">
+
+            <div class="stat-icon">
+
+                <i class='bx bx-building'></i>
+
+            </div>
+
+            <h3>
+                {{ student.school_class }}
+            </h3>
+
+            <span>
+                Current Class
+            </span>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+        <a
+            href="{% url 'student_profile' %}"
+            class="dashboard-stat stat-teachers"
+        >
+
+            <div class="stat-icon">
+
+                <i class='bx bx-user'></i>
+
+            </div>
+
+            <h3>
+                Profile
+            </h3>
+
+            <span>
+                View My Profile
+            </span>
+
+        </a>
+
+
+        <!-- REPORT CARD -->
+
+        <a
+            href="{% url 'student_report_card' %}"
+            class="dashboard-stat stat-subjects"
+        >
+
+            <div class="stat-icon">
+
+                <i class='bx bx-file'></i>
+
+            </div>
+
+            <h3>
+                Results
+            </h3>
+
+            <span>
+                View Report Card
+            </span>
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         QUICK ACTIONS
+    ===================================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    My Academic Portal
+                </h3>
+
+                <span>
+                    Quickly access your academic records
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
+            <!-- PROFILE -->
+
+            <a
+                href="{% url 'student_profile' %}"
+                class="quick-action"
+            >
+
+                <i class='bx bx-user'></i>
+
+                <div>
+
+                    <strong>
+                        My Profile
+                    </strong>
+
+                    <small>
+                        View personal information
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- MARKS -->
+
+            <a
+                href="{% url 'student_marks' %}"
+                class="quick-action success"
+            >
+
+                <i class='bx bx-book-open'></i>
+
+                <div>
+
+                    <strong>
+                        My Marks
+                    </strong>
+
+                    <small>
+                        View examination marks
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- ATTENDANCE -->
+
+            <a
+                href="{% url 'student_attendance' %}"
+                class="quick-action warning"
+            >
+
+                <i class='bx bx-calendar-check'></i>
+
+                <div>
+
+                    <strong>
+                        My Attendance
+                    </strong>
+
+                    <small>
+                        Check attendance records
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- REPORT CARD -->
+
+            <a
+                href="{% url 'student_report_card' %}"
+                class="quick-action purple"
+            >
+
+                <i class='bx bx-file'></i>
+
+                <div>
+
+                    <strong>
+                        My Report Card
+                    </strong>
+
+                    <small>
+                        View overall academic performance
+                    </small>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block title %}
+    My Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="page-section">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ===================================================== -->
+
+    <div class="page-title">
+
+        <div>
+
+            <h1>
+                My Profile
+            </h1>
+
+            <p class="text-muted mb-0">
+                View your personal and academic information
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'student_dashboard' %}"
+            class="btn btn-outline-secondary"
+        >
+
+            <i class='bx bx-arrow-back'></i>
+
+            Dashboard
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         PROFILE
+    ===================================================== -->
+
+    <div class="profile-card">
+
+
+        <!-- PROFILE HEADER -->
+
+        <div class="text-center mb-4">
+
+            <div class="profile-avatar">
+
+                <i class='bx bxs-user'></i>
+
+            </div>
+
+
+            <h2 class="mt-3 mb-1">
+                {{ student.name }}
+            </h2>
+
+
+            <p class="text-muted mb-0">
+
+                Roll No:
+
+                <strong>
+                    {{ student.roll_no }}
+                </strong>
+
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             INFORMATION
+        ================================================= -->
+
+        <div class="row g-3">
+
+
+            <!-- NAME -->
+
+            <div class="col-md-6">
+
+                <div class="info-box mb-0">
+
+                    <small class="text-muted">
+                        Full Name
+                    </small>
+
+                    <div class="fw-semibold mt-1">
+                        {{ student.name }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ROLL NUMBER -->
+
+            <div class="col-md-6">
+
+                <div class="info-box mb-0">
+
+                    <small class="text-muted">
+                        Roll Number
+                    </small>
+
+                    <div class="fw-semibold mt-1">
+                        {{ student.roll_no }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="col-md-6">
+
+                <div class="info-box mb-0">
+
+                    <small class="text-muted">
+                        Email Address
+                    </small>
+
+                    <div class="fw-semibold mt-1">
+                        {{ student.email }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="col-md-6">
+
+                <div class="info-box mb-0">
+
+                    <small class="text-muted">
+                        Phone Number
+                    </small>
+
+                    <div class="fw-semibold mt-1">
+                        {{ student.phone }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CLASS -->
+
+            <div class="col-md-12">
+
+                <div class="info-box mb-0">
+
+                    <small class="text-muted">
+                        Current Class
+                    </small>
+
+                    <div class="fw-semibold mt-1">
+
+                        <span class="badge bg-primary">
+                            {{ student.school_class }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ACADEMIC LINKS
+    ===================================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Academic Records
+                </h3>
+
+                <span>
+                    Access your academic information
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
+            <!-- MARKS -->
+
+            <a
+                href="{% url 'student_marks' %}"
+                class="quick-action success"
+            >
+
+                <i class='bx bx-book-open'></i>
+
+                <div>
+
+                    <strong>
+                        My Marks
+                    </strong>
+
+                    <small>
+                        View examination results
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- ATTENDANCE -->
+
+            <a
+                href="{% url 'student_attendance' %}"
+                class="quick-action warning"
+            >
+
+                <i class='bx bx-calendar-check'></i>
+
+                <div>
+
+                    <strong>
+                        My Attendance
+                    </strong>
+
+                    <small>
+                        View attendance records
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- REPORT CARD -->
+
+            <a
+                href="{% url 'student_report_card' %}"
+                class="quick-action purple"
+            >
+
+                <i class='bx bx-file'></i>
+
+                <div>
+
+                    <strong>
+                        My Report Card
+                    </strong>
+
+                    <small>
+                        View complete academic performance
+                    </small>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}
