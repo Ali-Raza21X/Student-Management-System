@@ -26,13 +26,12 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = os.environ.get(
     "DJANGO_ALLOWED_HOSTS",
-    "127.0.0.1,localhost"
+    "127.0.0.1,localhost,alirazadev.pythonanywhere.com"
 ).split(",")
 
-if os.environ.get("RENDER_EXTERNAL_HOSTNAME"):
-    ALLOWED_HOSTS.append(
-        os.environ.get("RENDER_EXTERNAL_HOSTNAME")
-    )
+CSRF_TRUSTED_ORIGINS = [
+    "https://alirazadev.pythonanywhere.com",
+]
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_SSL_REDIRECT = True
