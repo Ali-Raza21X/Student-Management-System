@@ -36,8 +36,6 @@ def add_attend(request):
         {"form": form}
     )
 
-
-
 @login_required
 def view_attend(request):
 

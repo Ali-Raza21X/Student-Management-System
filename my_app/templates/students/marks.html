@@ -128,19 +128,9 @@
 
                         <td>
 
-                            {% if mark.exam_name == "Mid" %}
-
-                                <span class="badge bg-warning text-dark">
-                                    Mid Term
-                                </span>
-
-                            {% else %}
-
-                                <span class="badge bg-primary">
-                                    Final Term
-                                </span>
-
-                            {% endif %}
+                          <span class="badge bg-primary">
+    {{ mark.get_exam_name_display }}
+</span>
 
                         </td>
 

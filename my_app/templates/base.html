@@ -163,22 +163,39 @@
 
 <!-- DASHBOARD -->
 
+<!-- DASHBOARD -->
+
 {% if user.is_superuser %}
 
-<a
-    href="{% url 'admin_dashboard' %}"
-    class="sidebar-link"
->
+<a href="{% url 'admin_dashboard' %}" class="sidebar-link">
+    <i class='bx bx-grid-alt'></i>
+    <span>Dashboard</span>
+</a>
+
+{% elif user.students %}
+
+<a href="{% url 'student_dashboard' %}" class="sidebar-link">
+    <i class='bx bx-grid-alt'></i>
+    <span>Dashboard</span>
+</a>
+
+{% elif user.teachers %}
+
+<a href="{% url 'teacher_dashboard' %}" class="sidebar-link">
+    <i class='bx bx-grid-alt'></i>
+    <span>Dashboard</span>
+</a>
+
+{% elif user.parents %}
+
+<a href="{% url 'parent_dashboard' %}" class="sidebar-link">
     <i class='bx bx-grid-alt'></i>
     <span>Dashboard</span>
 </a>
 
 {% else %}
 
-<a
-    href="{% url 'dashboard' %}"
-    class="sidebar-link"
->
+<a href="{% url 'dashboard' %}" class="sidebar-link">
     <i class='bx bx-grid-alt'></i>
     <span>Dashboard</span>
 </a>
