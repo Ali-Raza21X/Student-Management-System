@@ -161,18 +161,29 @@
 
 
 
-    <!-- DASHBOARD -->
+<!-- DASHBOARD -->
 
-    <a
-        href="{% url 'dashboard' %}"
-        class="sidebar-link"
-    >
+{% if user.is_superuser %}
 
-        <i class='bx bx-grid-alt'></i>
+<a
+    href="{% url 'admin_dashboard' %}"
+    class="sidebar-link"
+>
+    <i class='bx bx-grid-alt'></i>
+    <span>Dashboard</span>
+</a>
 
-        <span>Dashboard</span>
+{% else %}
 
-    </a>
+<a
+    href="{% url 'dashboard' %}"
+    class="sidebar-link"
+>
+    <i class='bx bx-grid-alt'></i>
+    <span>Dashboard</span>
+</a>
+
+{% endif %}
 
 
 
