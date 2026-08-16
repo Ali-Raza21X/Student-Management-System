@@ -58,9 +58,23 @@ def user_login(request):
                 login(request, user)
                 messages.success(request, 'User LoggedIn Successfully')
 
+                # Admin
                 if user.is_superuser:
                     return redirect('admin_dashboard')
 
+                # Student
+                if hasattr(user, 'students'):
+                    return redirect('student_dashboard')
+
+                # Teacher
+                if hasattr(user, 'teachers'):
+                    return redirect('teacher_dashboard')
+
+                # Parent
+                if hasattr(user, 'parents'):
+                    return redirect('parent_dashboard')
+
+                # Default
                 return redirect('dashboard')
 
             else:
