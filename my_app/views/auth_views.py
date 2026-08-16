@@ -41,27 +41,39 @@ def home(request):
 #     return render(request, "registration/register.html", {"form": form})
 
 def user_login(request):
-    if request.method =='POST':
-        form=LoginForm(request.POST)
-        if form.is_valid():
-           username=form.cleaned_data['username']
-           password=form.cleaned_data['password']
-           user=authenticate(
-               request,
-               username=username,
-               password=password
-           )
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
 
-           if user is not None:
-             login(request, user)
-             messages.success(request,'User LoggedIn Successfully')
-             return redirect("dashboard")
-           else:
-                messages.success(request,'Wrong Credentials Try Again')
-                return render (request,'registration/login.html',{'form':form,'error':'invaild username and password'})
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user = authenticate(
+                request,
+                username=username,
+                password=password
+            )
+
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'User LoggedIn Successfully')
+
+                if user.is_superuser:
+                    return redirect('admin_dashboard')
+
+                return redirect('dashboard')
+
+            else:
+                messages.error(request, 'Wrong Credentials. Try Again.')
+
     else:
-        form=LoginForm()
-    return render (request,'registration/login.html',{'form':form,})
+        form = LoginForm()
+
+    return render(
+        request,
+        'registration/login.html',
+        {'form': form}
+    )
 
 def logout_view(request):
 

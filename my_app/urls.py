@@ -7,6 +7,7 @@ urlpatterns = [
     path('', auth_views.home,name='home'), 
     path('dashboard/', dashboard_views.dashboard,name='dashboard'),
     path('admin/dashboard/',dashboard_views.admin_dashboard,name="admin_dashboard"),
+    path('admin/', admin.site.urls),
     path('login/', auth_views.user_login,name='login'),
     # path('register/', auth_views.register,name='register'),
     path('logout/', auth_views.logout_view,name='logout'),
