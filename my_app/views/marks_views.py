@@ -77,7 +77,7 @@ def detail_marks(request,id):
 
 @login_required
 def update_marks(request,id):
-    if not request.user.has_perm("my_app.update_marks"):
+    if not request.user.has_perm("my_app.change_marks"):
             raise PermissionDenied
     try:
         get_mrk=Marks.objects.get(id=id)

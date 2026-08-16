@@ -73,7 +73,7 @@ def detail_attend(request,id):
 
 @login_required
 def update_attend(request,id):
-    if not request.user.has_perm("my_app.update_attend"):
+    if not request.user.has_perm("my_app.change_attendence"):
             raise PermissionDenied
     try:
         get_atd=Attendence.objects.get(id=id)
